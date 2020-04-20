@@ -107,7 +107,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      26 min read
+      28 min read
     
 </span></p>
 
@@ -1028,7 +1028,7 @@ Batch size: 16</p>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Training-results">Training results<a class="anchor-link" href="#Training-results"> </a></h2><p>In the figures below, one can see the PSNR of the validation data vs the number of epochs and the training and validation loss vs number of epochs. It can be seen that the model is learning, also for a large number of epochs. However, the amount it learns is decreasing for an increase of epochs.</p>
+<h2 id="Training-results">Training results<a class="anchor-link" href="#Training-results"> </a></h2><p>In the figures below, one can see the PSNR of the validation data vs. the number of epochs and the training and validation loss vs number of epochs. It can be seen that the model is learning, also for a large number of epochs. However, the amount it learns is decreasing for an increasing amount of epochs.</p>
 <p><img src="https://drive.google.com/uc?id=1llCHlF0uBqwogKOAkFGw4zEKzNbHKcxk" alt="training_results" /></p>
 
 </div>
@@ -1084,6 +1084,15 @@ Batch size: 16</p>
 <h4 id="The-luminance-channel">The luminance channel<a class="anchor-link" href="#The-luminance-channel"> </a></h4><p>The paper states the following sentence: “For our final models, we use 50,000 randomly selected images from ImageNet [5] for the training. Following previous works, we only consider the luminance channel in YCbCr colour space in this section because humans are more sensitive to luminance changes” [6]. This sentence has been interpreted as that the model has been trained and evaluated on the luminance (Y) channel of the input images. This conclusion has been drawn by also looking at the model architecture where it seems that only one channel has been used as the input for the model. As the model also outputs the luminance channel, the choice has been made to also evaluate the model on the PSNR of two luminance images.</p>
 <h2 id="Discussion-of-our-implementation:">Discussion of our implementation:<a class="anchor-link" href="#Discussion-of-our-implementation:"> </a></h2><p>The unclarities about the paper are not the only thing contributing to the fact that our results are different from the original paper. During the visualization of the test phase, it was noted that some of the output images contained white spots in dark areas and dark spots in light areas. We believe this is a great contributor to our apparently low PSNR. We have been trying to understand what causes this, but at the time of writing, have not succeeded in finding the cause.</p>
 <p>Furthermore, we found some inconsistencies in the used test data. The high resolution images of one folder appear to be slightly different than the high resolution images of another folder, while this should in fact be exactly the same images. Therefore, it can be the case that we have used slightly altered test images in comparison with the paper’s test images, resulting in lower PSNR values.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="To-reproduce-or-not-to-reproduce?">To reproduce or not to reproduce?<a class="anchor-link" href="#To-reproduce-or-not-to-reproduce?"> </a></h1><p>The aim of this blogpost is to reproduce the results found in the “Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network”. In order to do so, a pytorch implementation is written from scratch using only information from the paper itself. The paper presents a method for image super resolution which is fast enough so that it can be applied on real-time video material. This is done with a CNN architecture, consisting of three convolutional layers, where the feature maps are extracted on the luminance channel in low resolution space. After this, the resolution is increased only at the very end by an upsampling layer.</p>
+<p>At the beginning of the project the paper was easy to read for us being no experts in the field of deep learning. Diving into the process of reproducing the paper we discovered that some hyperparameters for training were not specified in the paper. Also, we encountered some other uncertainties related to the stopping criterion and the luminance channel. Apart from the appearance of black and white spots we believe the visual results of our reproduction attempt are considerably accurate.</p>
+<p>Although the performance of our reproduction is not as high as stated in the paper we believe that it is reproducible. As this was our first project in the field of deep learning we had no experience in finding the correct hyperparameters for training. For someone with a bit more experience we think the results of the paper should be easily reproducible.</p>
 
 </div>
 </div>
