@@ -1,10 +1,16 @@
 ---
+noteId: "f33c6fe0832e11ea85d97fddad416172"
+tags: []
 toc: true
-layout: post
-description: A minimal example of using markdown with fastpages.
-categories: [markdown]
-title: An Example Markdown Post
+hide: true
+layout: "post"
+description: "A minimal example of using markdown with fastpages."
+categories:
+  - "markdown"
+title: "An Example Markdown Post"
+
 ---
+
 # Example Markdown Post
 
 ## Basic setup
