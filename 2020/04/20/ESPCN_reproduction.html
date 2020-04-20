@@ -154,29 +154,6 @@ window.onload = wrap_img;
 </div>
     
 
-    
-    
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># &quot;Reproduction of &#39;Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network&#39; &quot;</span>
-<span class="o">&gt;</span> <span class="s2">&quot;This blog post describes the reproduction of the paper: &#39;Real-Time Single Image and Video Super-Resolution Using an Efficient Sub-Pixel Convolutional Neural Network&#39;. It explains the main point of the paper, tries to reproduce the results of table 1 of the paper and argues about it&#39;s reproducibility&quot;</span>
-
-<span class="o">-</span> <span class="n">toc</span><span class="p">:</span> <span class="n">true</span><span class="o">-</span> <span class="n">branch</span><span class="p">:</span> <span class="n">master</span><span class="o">-</span> <span class="n">badges</span><span class="p">:</span> <span class="n">true</span>
-<span class="o">-</span> <span class="n">comments</span><span class="p">:</span> <span class="n">true</span>
-<span class="o">-</span> <span class="n">author</span><span class="p">:</span> <span class="n">Luuk</span> <span class="n">Balkenende</span> <span class="o">&amp;</span> <span class="n">Sieger</span> <span class="n">Falkena</span> <span class="o">&amp;</span> <span class="n">Luc</span> <span class="n">Kloosterlaan</span>
-<span class="o">-</span> <span class="n">categories</span><span class="p">:</span> <span class="p">[</span><span class="n">fastpages</span><span class="p">,</span> <span class="n">jupyter</span><span class="p">]</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-    
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr />
@@ -312,7 +289,7 @@ Mounted at /content/gdrive
 }
 
 .column {
-  float: left;
+  float: center;
   width: 33.33%;
   padding: 5px;
 }
@@ -411,26 +388,22 @@ function initComparisons() {
 <p>Click and slide the blue slider to compare the two images:</p>
 
 <div class="row">
-  <div class="column">
     <div class="img-comp-container">
       <div class="img-comp-img">
-        <img src="espcn_reprocution_img/sr_img_1.png" width="450" height="300" />
+        <img src="espcn_reproduction_img/sr_img_1.png" width="450" height="300" />
       </div>
       <div class="img-comp-img img-comp-overlay">
-        <img src="espcn_reprocution_img/lr_img_1.png" width="450" height="300" />
+        <img src="espcn_reproduction_img/lr_img_1.png" width="450" height="300" />
       </div>
     </div>
-  </div>
-  <div class="column">
     <div class="img-comp-container">
       <div class="img-comp-img">
-        <img src="espcn_reprocution_img/sr_img_8.png" width="450" height="300" />
+        <img src="espcn_reproduction_img/sr_img_8.png" width="450" height="300" />
       </div>
       <div class="img-comp-img img-comp-overlay">
-        <img src="espcn_reprocution_img/lr_img_8.png" width="450" height="300" />
+        <img src="espcn_reproduction_img/lr_img_8.png" width="450" height="300" />
       </div>
     </div>
-  </div>
 </div>
 
 
@@ -441,7 +414,6 @@ initComparisons();
 
 </body>
 </html>
-
 </div>
 
 </div>
