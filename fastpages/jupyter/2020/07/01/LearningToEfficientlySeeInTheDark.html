@@ -372,7 +372,6 @@ In the end our epochs were changed from taking a random patch of the 1865 images
 
 <span class="k">def</span> <span class="nf">shift_parameter_binarization</span><span class="p">(</span><span class="n">tensor</span><span class="p">,</span> <span class="n">shift_parameters</span><span class="p">,</span> <span class="n">empty_cache</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">empty_cache</span><span class="p">:</span>
-        <span class="c1"># print(&quot;Emptying cache&quot;)</span>
         <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">empty_cache</span><span class="p">()</span>
 
     <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">cat</span><span class="p">(</span>
@@ -418,12 +417,6 @@ In the end our epochs were changed from taking a random patch of the 1865 images
 
         <span class="bp">self</span><span class="o">.</span><span class="n">M</span> <span class="o">=</span> <span class="n">M</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">N</span> <span class="o">=</span> <span class="n">N</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">N</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">betas</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">Tensor</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">vs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">Tensor</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
-
-            <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">normal_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">betas</span><span class="p">)</span>
-            <span class="n">nn</span><span class="o">.</span><span class="n">init</span><span class="o">.</span><span class="n">normal_</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vs</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">use_estimated_tensors</span> <span class="o">=</span> <span class="n">estimated_weights</span>
 
@@ -544,6 +537,7 @@ Just as a reminder: $M$ are the amount of bits used for the weight approximation
 <th>N</th>
 <th>PSNR</th>
 <th style="text-align:center">Theoretical speedup</th>
+<th style="text-align:center">Memory Reduction</th>
 </tr>
 </thead>
 <tbody>
@@ -553,12 +547,14 @@ Just as a reminder: $M$ are the amount of bits used for the weight approximation
 <td>x</td>
 <td>28.88</td>
 <td style="text-align:center">1x</td>
+<td style="text-align:center">1x</td>
 </tr>
 <tr>
 <td>Results of [3], in PyTorch</td>
 <td>x</td>
 <td>x</td>
 <td>28.55</td>
+<td style="text-align:center">1x</td>
 <td style="text-align:center">1x</td>
 </tr>
 <tr>
@@ -567,6 +563,7 @@ Just as a reminder: $M$ are the amount of bits used for the weight approximation
 <td>x</td>
 <td>27.6</td>
 <td style="text-align:center">0.66x</td>
+<td style="text-align:center">10.67x</td>
 </tr>
 <tr>
 <td>ABCLSID</td>
@@ -574,6 +571,7 @@ Just as a reminder: $M$ are the amount of bits used for the weight approximation
 <td>x</td>
 <td>25.70</td>
 <td style="text-align:center">2x</td>
+<td style="text-align:center">32x</td>
 </tr>
 <tr>
 <td>ABCLSID</td>
@@ -581,6 +579,7 @@ Just as a reminder: $M$ are the amount of bits used for the weight approximation
 <td>1</td>
 <td>20.21</td>
 <td style="text-align:center">55.11x</td>
+<td style="text-align:center">32x</td>
 </tr>
 <tr>
 <td>ABCLSID</td>
@@ -588,6 +587,7 @@ Just as a reminder: $M$ are the amount of bits used for the weight approximation
 <td>3</td>
 <td>20.93</td>
 <td style="text-align:center">6.77x</td>
+<td style="text-align:center">10.67x</td>
 </tr>
 <tr>
 <td>ABCLSID</td>
@@ -595,6 +595,7 @@ Just as a reminder: $M$ are the amount of bits used for the weight approximation
 <td>3</td>
 <td>21.19</td>
 <td style="text-align:center">4.08x</td>
+<td style="text-align:center">6.4x</td>
 </tr>
 <tr>
 <td>ABCLSID</td>
@@ -602,10 +603,11 @@ Just as a reminder: $M$ are the amount of bits used for the weight approximation
 <td>5</td>
 <td>21.86</td>
 <td style="text-align:center">2.46x</td>
+<td style="text-align:center">6.4x</td>
 </tr>
 </tbody>
 </table>
-<p><img src="https://docs.google.com/u/0/uc?id=1Xqfoij58VRXel8caPEnbTMY1Vo67rHjJ" alt="alt text" /></p>
+<p><img src="https://docs.google.com/u/0/uc?id=1bxzfre9VU7d2NEsitGSi_CU0Cazerj8c" alt="alt text" /></p>
 
 </div>
 </div>
@@ -637,7 +639,7 @@ Just as a reminder: $M$ are the amount of bits used for the weight approximation
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Discussion">Discussion<a class="anchor-link" href="#Discussion"> </a></h1><p>From the results section, one thing that is immediately clear, is when we start to binarize the activations, the performance of the network drops significantly. Even the network with real-valued activations and 1-bit weights performs much better than the network with 5-bit activations and 5-bit weights. We are not exactly sure about the reason for this. It could be that binarizing the activations simply causes too much loss of information for the network to function properly. For example in the images (refer to images with binary activations), you can see that a lot of the colour of the image is lost. Especially for $N=1$, there the image has almost become black and white.</p>
+<h1 id="Discussion">Discussion<a class="anchor-link" href="#Discussion"> </a></h1><p>When looking at the results in the table and the images, you can see that the network still performs quite well when only the weights are binarized, the difference between $M = 3$ with real valued activations is almost indistinguishable from the original model (even when looking at the direct interactive comparison). Even using 1-bit $(M = 1)$ the results are still passable considering 32x less memory is needed. However, when we start to binarize the activations, the performance of the network starts to drop significantly. Even the network with real-valued activations and 1-bit weights performs much better than the network with 5-bit activations and 5-bit weights. We are not exactly sure about the reason for this. It could be that binarizing the activations simply causes too much loss of information for the network to function properly. For example in the images (refer to images with binary activations), you can see that a lot of the colour of the image is lost. Especially for $N=1$, there the image has almost become black and white.</p>
 <p>One possible explanation for the loss in information might be that we noticed that for $M = N = 3$, the tensors of the estimated weights and activations only contained $4$ or $5$ unique values. Having a 3-bit accuracy, it should be possible to achieve 8 unique levels instead. When $M = N = 5$, it should be possible to output 32 different values, but instead, we found that the tensors only contained $5$ or $6$ unique values.</p>
 <p>One explanation for this could be that the shifting of parameters to form $\boldsymbol{B}$ is not done optimally. Right now the shifts, which set the thresholds for binarization, are uniformly distributed over a range from minus the standard deviation to plus the standard deviation, which is the way it was described in the ABC-Net paper. However, since the distribution of weights often resembles a Gaussian distribution, it might be better to put the thresholds around the mean closer together and the thresholds further from the mean further apart, to better match the Gaussian distribution.
 Currently, in the interest of time for this project, we were unable to research further into this problem, but we expect that if more of the possible weights occur, that this will lead to a smaller approximation error, which in term helps with improving performance.</p>
