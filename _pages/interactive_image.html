@@ -4,12 +4,14 @@
     <title>Learning To Efficiently See In The Dark</title>
     <style>
         #slider1 {
+            float: left;
             display: block;
             margin: 10px;
             margin-left: auto;
             margin-right: auto;
         }
         #slider2 {
+            float: left;
             display: block;
             margin: 10px;   
             margin-left: auto;
@@ -39,27 +41,12 @@
         .img-zoom-result {
         border: 1px solid #d4d4d4;
         /*set the size of the result div:*/
-        width: 600px;
-        height: 600px;
+        width: 650px;
+        height: 650px;
         }
 
-        .column1 {
-        float: left;
-        width: 66.66%;
-        padding: 5px;
-        }
-
-        .column2 {
-        float: left;
-        width: 33.33%;
-        padding: 5px;
-        }
-
-        /* Clear floats after image containers */
-        .row::after {
-        content: "";
-        clear: both;
-        display: table;
+        .imgContainer{
+            float:left;
         }
     </style>
 </head>
@@ -69,10 +56,7 @@
         <h1>Learning To Efficiently See In The Dark</h1>
     </div>
         
-    <div id="slider1">
-    </div>
-    <div id="slider2">
-    </div>
+    <div id="slider1"></div><div id="slider2"></div>
     <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -102,7 +86,7 @@
         });
     </script>
 
-    <div class="img-zoom-container">
+    <!-- <div class="img-zoom-container">
         <div class="row">
             <div class="column1">
                 <img id="myimage" src="images/10106_00_300_out.png" width="900" height="820" style="width:100%">
@@ -111,6 +95,17 @@
                 <div id="myresult" class="img-zoom-result" style="width:100%"></div>
             </div>
           </div>
+    </div> -->
+
+    <div class="image123">
+        <div class="imgContainer">
+            <img id="myimage" src="images/10106_00_300_out.png" width="1000" height="650">
+            <p>This is image 1</p>
+        </div>
+        <div class="imgContainer">
+            <div id="myresult" class="img-zoom-result"></div>
+            <p>This is image 2</p>
+        </div>
     </div>
   
     <script>
