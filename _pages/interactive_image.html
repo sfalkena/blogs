@@ -20,6 +20,13 @@
             margin-left: auto;
             margin-right: auto;
         }
+        #slider3 {
+            float: left;
+            display: block;
+            margin: 40px;   
+            margin-left: auto;
+            margin-right: auto;
+        }
         .center {
             text-align: center;
         }
@@ -83,8 +90,9 @@
     </script>
 
 
-<div id="slider1"><h1>Comparison of full-precision model with binarized (M=3, N=3)</h1></div>
-<div id="slider2"><h1>Comparison of full-precision model with binarized (M=3, N=5)</h1></div>
+<div id="slider1"><h1>Comparison of full-precision model with binarized (M=3, N=full-precision)</h1></div>
+<div id="slider2"><h1>Comparison of full-precision model with binarized (M=5, N=5)</h1></div>
+<div id="slider3"><h1>Comparison of full-precision model with binarized (M=1, N=1)</h1></div>
 
 
 
@@ -94,7 +102,7 @@
             "width": "1050",
             "height": "900px",
             "start": "25%",
-            "firstImage": "https://docs.google.com/u/0/uc?id=1niA76Jwfp6cIdWmnv70omRFBtAaut1Ub",
+            "firstImage": "https://docs.google.com/u/0/uc?id=1ihb4AvT8Jjj8g5N0zfLrss7-Bms0Vr5g",
             "secondImage": "https://docs.google.com/u/0/uc?id=1bY4kiws43KrTaUEi9U8tDtx4j6qjXpF8"
         }
         
@@ -102,13 +110,21 @@
             "width": "1050px",
             "height": "900px",
             "start": "25%",
-            "firstImage": "https://docs.google.com/u/0/uc?id=1CK_rFLYvjPqkw2j4RIng8grU6ovAATWc",
+            "firstImage": "https://docs.google.com/u/0/uc?id=1BN66SlR4UVNOn09txj-9RQKpC-aKtVPX",
+            "secondImage": "https://docs.google.com/u/0/uc?id=1bY4kiws43KrTaUEi9U8tDtx4j6qjXpF8"
+        }
+        var config_3 = {
+            "width": "1050px",
+            "height": "900px",
+            "start": "25%",
+            "firstImage": "https://docs.google.com/u/0/uc?id=1Ypb9LUoJt5V44qu9zHXobbNwoa4NOZcn",
             "secondImage": "https://docs.google.com/u/0/uc?id=1bY4kiws43KrTaUEi9U8tDtx4j6qjXpF8"
         }
 
         $(document).ready(function() {
             $("#slider1").hanBeforeAfterSlider(config_1);
             $("#slider2").hanBeforeAfterSlider(config_2);
+            $("#slider3").hanBeforeAfterSlider(config_3);
         });
     </script>
 
