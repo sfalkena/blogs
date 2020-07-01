@@ -8,28 +8,24 @@
         }
         #slider1 {
             float: left;
-            display: block;
             margin: 50px;
             margin-left: auto;
             margin-right: auto;
         }
         #slider2 {
             float: left;
-            display: block;
             margin: 50px;   
             margin-left: auto;
             margin-right: auto;
         }
         #slider3 {
             float: left;
-            display: block;
             margin: 50px;   
             margin-left: auto;
             margin-right: auto;
         }        
         #slider4 {
             float: left;
-            display: block;
             margin: 50px;   
             margin-left: auto;
             margin-right: auto;
@@ -65,6 +61,9 @@
         .imgContainer{
             float:left;
         }
+
+        #floated_imgs { float: left; }
+        #floated_imgs img {display: block; }
     </style>
 </head>
 
@@ -81,27 +80,31 @@
     <!-- <script src="node_modules/jquery/dist/jquery.js"></script> -->
     <script src="jquery-before-after-slider.min.js"></script>
 
-    <h1>Output image for M=3, full-precision activations</h1>
-    <div class="image123">
-        <div class="imgContainer">
-            <img id="myimage" src="https://docs.google.com/u/0/uc?id=1bY4kiws43KrTaUEi9U8tDtx4j6qjXpF8" width="1000" height="650">
+
+
+
+<div id=floated_imgs>
+    <div>
+        <h1>Output image for M=3, full-precision activations</h1>
+        <div class="image123">
+            <div class="imgContainer">
+                <img id="myimage" src="https://docs.google.com/u/0/uc?id=1bY4kiws43KrTaUEi9U8tDtx4j6qjXpF8" width="1000" height="650">
+            </div>
+            <div class="imgContainer">
+                <div id="myresult" class="img-zoom-result"></div>
+            </div>
         </div>
-        <div class="imgContainer">
-            <div id="myresult" class="img-zoom-result"></div>
         </div>
-    </div>
-  
-    <script>
-        // Initiate zoom effect:
-        imageZoom("myimage", "myresult");
-    </script>
-
-
-<div id="slider4"><h1>Comparison of full-precision model with conventional pipeline </h1></div>
-<div id="slider1"><h1>Comparison of full-precision model with binarized (M=3, N=x)</h1></div>
-<div id="slider2"><h1>Comparison of full-precision model with binarized (M=5, N=5)</h1></div>
-<div id="slider3"><h1>Comparison of full-precision model with binarized (M=1, N=1)</h1></div>
-
+      
+        <script>
+            // Initiate zoom effect:
+            imageZoom("myimage", "myresult");
+        </script>
+<div><div id="slider4"><h1>Comparison of full-precision model with conventional pipeline </h1></div></div>
+<div><div id="slider1"><h1>Comparison of full-precision model with binarized (M=3, N=x)</h1></div></div>
+<div><div id="slider2"><h1>Comparison of full-precision model with binarized (M=5, N=5)</h1></div></div>
+<div><div id="slider3"><h1>Comparison of full-precision model with binarized (M=1, N=1)</h1></div></div>
+</div>
 
 
 
