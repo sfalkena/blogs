@@ -21,6 +21,46 @@
         body {
             background-color: grey;
         }
+
+        * {box-sizing: border-box;}
+
+        .img-zoom-container {
+        position: relative;
+        }
+
+        .img-zoom-lens {
+        position: absolute;
+        border: 1px solid #d4d4d4;
+        /*set the size of the lens:*/
+        width: 100px;
+        height: 100px;
+        }
+
+        .img-zoom-result {
+        border: 1px solid #d4d4d4;
+        /*set the size of the result div:*/
+        width: 600px;
+        height: 600px;
+        }
+
+        .column1 {
+        float: left;
+        width: 66.66%;
+        padding: 5px;
+        }
+
+        .column2 {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+        }
+
+        /* Clear floats after image containers */
+        .row::after {
+        content: "";
+        clear: both;
+        display: table;
+        }
     </style>
 </head>
 
@@ -60,6 +100,22 @@
             $("#slider1").hanBeforeAfterSlider(config_1);
             $("#slider2").hanBeforeAfterSlider(config_2);
         });
+    </script>
+
+    <div class="img-zoom-container">
+        <div class="row">
+            <div class="column1">
+                <img id="myimage" src="images/10106_00_300_out.png" width="900" height="820" style="width:100%">
+            </div>
+            <div class="column2">
+                <div id="myresult" class="img-zoom-result" style="width:100%"></div>
+            </div>
+          </div>
+    </div>
+  
+    <script>
+        // Initiate zoom effect:
+        imageZoom("myimage", "myresult");
     </script>
 </body>
 
